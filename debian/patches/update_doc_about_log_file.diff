@@ -1,0 +1,39 @@
+Description: The log file was moved to /var/log
+ In debian, if the log file is not specified, then siege logs the
+ transaction to /var/log/siege.log
+Author: Alexandre Anriot <alexandre@atlantilde.com>
+Bug-Debian: http://bugs.debian.org/610426
+Forwarded: not-needed
+Last-Update: 2016-05-22
+
+--- a/doc/siegerc.in
++++ b/doc/siegerc.in
+@@ -16,7 +16,7 @@
+ # You can also reference ENVIRONMENT variables without actually 
+ # declaring them, example:
+ #
+-# logfile = $(HOME)/var/siege.log
++# logfile = $(HOME)/var/log/siege.log
+ 
+ #
+ # Verbose mode: With this feature enabled, siege will print the
+@@ -86,7 +86,7 @@
+ logging = false
+ 
+ #
+-# Logfile, the default siege logfile is $PREFIX/var/siege.log This
++# Logfile, the default siege logfile is /var/log/siege.log This
+ # directive allows you to choose an alternative log file. Environment
+ # variables may be used as shown in the examples:
+ #
+--- a/src/main.c
++++ b/src/main.c
+@@ -152,7 +152,7 @@
+   puts("  -f, --file=FILE           FILE, select a specific URLS FILE." );
+   printf("  -R, --rc=FILE             RC, specify an %src file\n",program_name);
+   puts("  -l, --log[=FILE]          LOG to FILE. If FILE is not specified, the");
+-  printf("                            default is used: PREFIX/var/%s.log\n", program_name);
++  printf("                            default is used: /var/log/%s.log\n", program_name);
+   puts("  -m, --mark=\"text\"         MARK, mark the log file with a string." );
+   puts("                            between .001 and NUM. (NOT COUNTED IN STATS)");
+   puts("  -H, --header=\"text\"       Add a header to request (can be many)" ); 

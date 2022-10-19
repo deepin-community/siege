@@ -1,0 +1,28 @@
+Source: siege
+Section: web
+Priority: optional
+Maintainer: Josue Abarca <jmaslibre@debian.org>
+Build-Depends: debhelper (>= 10), libssl-dev (>= 0.9.8),
+ zlib1g-dev
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+Vcs-Git: https://salsa.debian.org/debian/siege.git
+Vcs-Browser: https://salsa.debian.org/debian/siege
+Homepage: http://www.joedog.org/JoeDog/Siege
+
+Package: siege
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: siege-ssl
+Replaces: siege-ssl
+Description: HTTP regression testing and benchmarking utility
+ Siege is an regression test and benchmark utility. It can stress test a single
+ URL with a user defined number of simulated users, or it can read many URLs
+ into memory and stress them simultaneously. The program reports the total
+ number of hits recorded, bytes transferred, response time, concurrency, and
+ return status. Siege supports HTTP/1.0 and 1.1 protocols, the GET and POST
+ directives, cookies, transaction logging, and basic authentication. Its
+ features are configurable on a per user basis.
+ .
+ Note: this package contains siege with HTTPS support turned on, thus it
+ obsoletes siege-ssl package now.

@@ -1,0 +1,37 @@
+Description: This patch is added to fix
+"can't break lines" errors from man, a missing dash in the description
+ and a typo.
+
+Forwarded: no
+Author: Josue Abarca <jmaslibre@debian.org>
+Last-Update: 2016-06-12
+
+--- a/doc/siege.1.in
++++ b/doc/siege.1.in
+@@ -130,7 +130,7 @@
+ .if n .ad l
+ .nh
+ .SH "NAME"
+-$_PROGRAM is a HTTP/FTP load tester and benchmarking utility.
++$_PROGRAM \- An HTTP/FTP load tester and benchmarking utility.
+ .SH "SYNOPSIS"
+ .IX Header "SYNOPSIS"
+ .Vb 4
+@@ -345,7 +345,7 @@
+ .IX Item "-m string, --mark=string"
+ This option allows you to log a message to the log file before your 
+ stats are written there. It is generally used to identify the 
+-proceding run. You could, for example, mark the file with your 
++proceeding run. You could, for example, mark the file with your
+ command-line parameters so it's understood what configuration 
+ generated the following data.
+ .ie n .IP "\fB\-H ""header: value""\fR, \fB\-\-header=""Header: value""\fR" 4
+@@ -394,7 +394,7 @@
+ formats, siege introduces its own \s-1URL\s0 format to indicate protocol method.
+ .PP
+ An \s-1RFC\s0 1738 \s-1URL\s0 looks like this:
+-  <scheme>://<username>:<password>@<hostname>:<port>/<path>;<params>?<query>#<frag>
++  <scheme>://<username>:<password>@<hostname>\::<port>/<path>;<params>?<query>#<frag>
+ .PP
+ A \f(CW$_PROGRAM\fR \s-1URL\s0 with a method indicator looks like this:
+   <scheme>://<username>:<password>@<hostname>:<port>/<path> \s-1POST\s0 <query>

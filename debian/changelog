@@ -1,0 +1,423 @@
+siege (4.0.7-1) unstable; urgency=medium
+
+  * New upstream version 4.0.7.
+  * update_doc_about_log_file.diff updated.
+  * siege.1.in.diff updated.
+  * set_verbose_to_false.diff removed thanks to the new quiet option.
+  * debian/control
+    - update vcs fields.
+    - Standards-Version increased to 4.5.0, Rules Requires Root added.
+  * Bump debhelper compat level to 10
+    - autotools_dev was replaced with dh_update_autotools_config.
+    - dh_update_autotools_config is called by default.
+    - disable autoreconf to preserve the current build process.
+    - Remove useless autotools-dev build-dependency.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Sat, 01 Aug 2020 20:30:21 -0600
+
+siege (4.0.4-1) unstable; urgency=medium
+
+  * New upstream version 4.0.4. Closes: #865502
+  * debian/control
+    - Standards-Version increased to 4.1.1, no changes required.
+    - Build dependency on zlib1g-dev added to enable Zip encoding.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Sun, 22 Oct 2017 21:37:28 -0600
+
+siege (4.0.2-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Canonicalize Vcs-* fields.
+  * bump debhelper compat level to 9:
+    + dh exports build flags from dpkg-buildflags.
+  * Stop using hardening-wrapper, make use of dpkg-buildflags with
+        DEB_BUILD_MAINT_OPTIONS=hardening=+all
+    instead.  Closes: #836654
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 27 Sep 2016 13:28:01 +0000
+
+siege (4.0.2-1) unstable; urgency=medium
+
+  * New upstream version 4.0.2.
+  * debian/docs
+    - NEWS, KNOWNBUGS, MACHINES, are no longer provided by upstream.
+    - README was renamed to README.md
+  * debian/control
+    - Fix insecure uris in the vcs fields.
+    - Standards-Version increased to 3.9.8, no changes required.
+  * debian/copyright removed some entries because lib/* was removed by
+    upstream.
+  * hyphen-used-as-minus-sign.diff removed, fixed upstream.
+  * layingsiege.7.in.diff removed, this file was removed upstream.
+  * set_verbose_to_false.diff updated.
+  * update_doc_about_log_file.diff updated.
+  * update_doc_about_urls_file.diff updated.
+  * siege.1.in.diff patch added in order to fix a typo, a missing dash,
+    and a break line issue in the manpage.
+  * debian/rules updated the debhelper sequence and options order.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Sat, 11 Jun 2016 07:28:52 -0600
+
+siege (3.0.8-1) unstable; urgency=medium
+
+  * Imported Upstream version 3.0.8
+  * debian/source/lintian-overrides:
+    - Add override for new lintian error concerning hardening-wrapper
+      being obsolete, isn't so based on #711193 despite lintian reporting
+      such. Siege continues build-depending on hardening-wrapper for now,
+      while the build scripts are updated to support dpkg build flags.
+  * debian/control Standards-Version increased to 3.9.6, no changes
+    required.
+  * debian/watch updated.
+  * hyphen-used-as-minus-sign.diff added in order to correct some hyphens
+    thar were used as minus in siege.1.in.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Sun, 05 Oct 2014 18:18:02 -0600
+
+siege (3.0.5-1) unstable; urgency=low
+
+  * New Upstream version 3.0.5.
+  * bombardment.in-typo.diff patch updated.
+  * debian/control
+    - Build-Depends: Builds-Depends: Removed automake. (closes: #724435)
+    - Standards-Version increased to 3.9.5, no changes required.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Fri, 22 Nov 2013 22:05:15 -0600
+
+siege (3.0.1-1) unstable; urgency=low
+
+  * New upstream version.
+    - The undefined behavior in DNS resolution is now fixed, thanks to
+      Michael Hudson-Doyle for providing to upstream the patch to fix this
+      (closes: #706662).
+  * hyphen-used-as-minus-sign.diff patch dropped, it was merged upstream.
+  * update_doc_about_log_file.diff path updated.
+  * update_doc_about_urls_file.diff path updated.
+  * Upload to unstable.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Sun, 02 Jun 2013 22:01:47 -0600
+
+siege (2.78-1) experimental; urgency=low
+
+  * New upstream version
+  * debian/rules override_dh_auto_install parameters removed, because
+    upstream added the DESTDIR to the makefile.
+  * debian/control Standards-Version increased to 3.9.4, no changes
+    required.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Sun, 24 Mar 2013 17:59:43 -0600
+
+siege (2.74-1) experimental; urgency=low
+
+  * New upstream version (closes: #692588).
+  * debian/watch file updated, thanks to Dmitry Smirnov.
+  * fix_aclocal_warnings.diff patch dropped, it was merged upstream.
+  * default_urlsfile_path.diff patch dropped, it was merged upstream.
+  * setup.h.diff patch dropped, it was merged upstream.
+  * update_doc_about_urls_file.diff patch updated.
+  * set_verbose_to_false.diff patch updated.
+  * update_doc_about_log_file.diff updated.
+  * format_strings.diff dropped, it was fixed upstream.
+  * hyphen-used-as-minus-sign.diff patch added in order to fix some typos
+    in the siege manual page.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Thu, 21 Mar 2013 18:58:26 -0600
+
+siege (2.70-4) unstable; urgency=low
+
+  * Enable hardened build flags using the hardening-wrapper
+    (Closes: #689965)
+    - debian/rules Enable the hardening-wrapper.
+    - debian/control Build-Depend on hardening-wrapper.
+  * debian/control New maintainer address. Thanks to Patrick Matthäi for
+    his sponsorships.
+
+ -- Josue Abarca <jmaslibre@debian.org>  Sat, 06 Oct 2012 10:47:10 -0600
+
+siege (2.70-3) unstable; urgency=low
+
+  * setup.h.diff patch added in order to improve the definition of
+    INT_MAX. (Closes: #665407)
+  * debian/control Standards-Version increased to 3.9.3, no changes
+    required.
+
+ -- Josue Abarca <jmaslibre@debian.org.gt>  Sat, 14 Apr 2012 15:34:58 -0600
+
+siege (2.70-2) unstable; urgency=low
+
+  * fix_aclocal_warnings.diff patch added in order to fix some aclocal's
+    warnings in the acinclude.m4 file (The configure and makefiles are
+    regenerated if automake1.9 is present).
+  * debian/rules override_dh_auto_configure modified in order to change
+    the default path of the log file.  (closes: #610426).
+  * default_logfile_path.diff patch added in order to document the path
+    change of the log file thanks to Alexandre Anriot.
+  * default_urlsfie_path.diff patch added in order to change the deault
+    path of urls.txt to /etc/siege (closes: #610420).
+  * update_doc_about_urls_file.diff patch added to update the default path
+    of urls.txt in the man pages.
+  * set_verbose_to_false.diff patch added in order to set verbose to false
+    by default.
+  * debian/control
+    + Standards-Version increased to 3.9.1, no changes required.
+    + Vcs-Git and Vcs-Browser fields updated
+
+ -- Josue Abarca <jmaslibre@debian.org.gt>  Sun, 05 Feb 2012 22:30:25 -0600
+
+siege (2.70-1) unstable; urgency=low
+
+  * New upstream version (closes: #590118).
+  * Remove debian/patches/bombardment.in-fix-arithmetic.diff (merged
+    upstream).
+  * debian/rules
+    - Unnecessary export removed.
+    - Build dependency on automake1.9 added.
+  * debian/control Standards-Version increased to 3.9.1, no changes
+    required.
+  * debian/copyright updated.
+  * debian/dirs 'usr/bin' removed because it is unnecessary.
+  * debian/docs AUTHORS added.
+
+ -- Josue Abarca <jmaslibre@debian.org.gt>  Tue, 27 Jul 2010 12:00:00 -0600
+
+siege (2.69-1) unstable; urgency=low
+
+  * New upstream release. (closes: #553231)
+  * New Maintainer, thanks to Tristan Greaves for his
+    previous work. (closes: #578699)
+  * Debhelper 7 used to simplify debian/rules.
+  * Switch to dpkg-source 3.0 (quilt) format.
+  * debian/rules
+    - siege2csv.pl is now renamed to siege2csv at build time.
+    - dh --with autotools_dev added to update config.{sub,guess}.
+      (closes: #535726)
+    - Build dependency on autotool-dev (>= 20100122.1) added.
+  * Switch to dpkg-source 3.0 (quilt) format.
+  * layingsiege.7.in.diff patch added to fix a typo.
+  * bombardment.in-typo.diff patch added to avoid the use of
+    a language-specific extension (Debian Policy Manual
+    section 10.4).
+  * bombardment.in-fix-arithmetic.diff patch added to fix
+    syntax errors on arithmetic expressions. (closes: #551270)
+    section 10.4).
+  * debian/control Vcs-Git and Vcs-Browser added.
+
+ -- Josue Abarca <jmaslibre@debian.org.gt>  Thu, 20 May 2010 23:38:34 -0600
+
+siege (2.68-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control
+    - Builds-Depends: Removed automake, autotools-dev, quilt, ed, cdbs.
+  * debian/patches
+    - Removed autotools_upgrade.patch (Upstream has upgraded automake).
+    - Removed etc_siegerc.patch (Upstream has included).
+    - Removed fix_cl_arguments.patch (Upstream fixed bug differently).
+    - Removed fix_http_headers.patch (Upstream has included).
+    - Removed fix_man_pages.patch (Upstream has included).
+  * Fixed lintian warning: ancient-libtool-usage.
+
+ -- Tristan Greaves <tristan@extricate.org>  Thu, 23 Apr 2009 14:10:13 +0100
+
+siege (2.67-3) unstable; urgency=low
+
+  * Actual fix of $HOME/.siegerc build breakage problem.
+    (Closes: #321816)
+  * Force autoreconf on package build to ensure same behaviour across all
+    build hosts.  Patches streamlined with this in mind.
+  * debian/control
+    - Build-Depends: use automake instead of automake1.9.
+
+ -- Tristan Greaves <tristan@extricate.org>  Mon, 30 Mar 2009 15:59:17 +0100
+
+siege (2.67-2) unstable; urgency=low
+
+  * Fix regression of $HOME/.siegerc attempt breaking builds on some
+    platforms. (Closes: #321816)
+
+ -- Tristan Greaves <tristan@extricate.org>  Sat, 28 Mar 2009 19:04:45 +0000
+
+siege (2.67-1) unstable; urgency=low
+
+  * New maintainer. (Closes: #521034)
+  * New upstream release.
+  * Added fix_cl_arguments.patch to stop unknown command line arguments
+    segfaulting program. (Closes: #521029)
+  * Added autotools_upgrade.patch to patch source to latest autotools
+    usage (Was using deprecated automake1.6)
+  * debian/control:
+    - Standards-Version: 3.8.1
+    - Fixed lintian warning: debhelper-but-no-misc-depends
+  * debian/copyright brought up to date.
+  * Fixed lintian warning: quilt-patch-missing-description
+  * Fixed lintian warning: hyphen-used-as-minus-sign
+  * Fixed lintian warning: patch-system-but-direct-changes-in-diff
+
+ -- Tristan Greaves <tristan@extricate.org>  Tue, 24 Mar 2009 21:34:16 +0000
+
+siege (2.66-2) unstable; urgency=low
+
+  * debian/control:
+    - Added Build-Depends: automake1.9. (Closes: #458266)
+    - Build-Depends: libssl-dev (>= 0.9.8) instead libssl-dev (>= 0.9.8-1)
+  * debian/copyright:
+    - Added SSL license mention. (Closes: #463945)
+  * Fixed inconsistent man page urls_txt.5.in in fix_man_pages.patch.
+    (Closes: #414159)
+  * Added fix_bashism.patch to fix bashism in bombardment script.
+    (Closes: #465357)
+
+ -- Jose Carlos Medeiros <debian@psabs.com.br>  Sat, 22 Mar 2008 20:32:10 -0300
+
+siege (2.66-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #403201)
+  * New mantainer. (Closes: #401680)
+  * Updated package to use cdbs.
+  * debian/watch: Added.
+  * debian/control:
+    - Added "Homepage:" pseudo-header as Reference 1.14.6.
+    - Standards-Version: 3.7.3
+    - Added Build-Depends: cdbs, autotools-dev, quilt
+
+ -- Jose Carlos Medeiros <debian@psabs.com.br>  Sat, 03 Nov 2007 05:37:51 +0000
+
+siege (2.65-4) unstable; urgency=low
+
+  * Orphaning package (#401680), changed maintainger to QA Group.
+
+
+ -- Ryszard Lach <rla@debian.org>  Tue,  5 Dec 2006 12:46:55 +0100
+
+siege (2.65-3) unstable; urgency=medium
+
+  * Applied patch provided by Christian Aichinger and Michael Ablassmeier.
+    Closes: #385295.
+
+ -- Ryszard Lach <rla@debian.org>  Wed,  27 Sep 2006 08:15:40 +0200
+
+siege (2.65-2) unstable; urgency=low
+
+  * siege2csv.pl renamed to siege2csv
+  * Fixed debian/rules. Closes #376669.
+
+ -- Ryszard Lach <rla@debian.org>  Tue,  4 Jul 2006 14:32:37 +0200
+
+siege (2.65-1) unstable; urgency=low
+
+  * New upstream - beta version. Closes #355918.
+  * minor fixes in manual pages
+
+
+ -- Ryszard Lach <rla@debian.org>  Sun,  5 Mar 2006 22:16:27 +0100
+
+siege (2.61-3) unstable; urgency=low
+
+  * Add libssl-dev version (>= 0.9.8-1) to build-depends.
+
+ -- Ryszard Lach <rla@debian.org>  Mon, 10 Oct 2005 12:42:28 +0200
+
+siege (2.61-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * add single quotes to the EOF in utils/siege.config.in (closes:
+    #323684)
+  * apply patch from Robert Waldner <rw+bug@coretec.at> to fix construction of
+    http headers (closes: #329182)
+  * install sample siegerc to /etc/siege and use that if no ~/.siegerc
+    exists. use patch from tollef fog heen. (closes: #321816)
+
+ -- Jonas Meurer <mejo@debian.org>  Mon,  3 Oct 2005 01:32:10 +0200
+
+siege (2.61-2) unstable; urgency=low
+
+  * Fixed siege.config scropt. Closes: #306952.
+
+ -- Ryszard Lach <rla@debian.org>  Fri,  5 Aug 2005 08:53:42 +0200
+
+siege (2.61-1) unstable; urgency=low
+
+  * Added Debian revision. Closes: #303163.
+
+ -- Ryszard Lach <rla@debian.org>  Wed, 13 Apr 2005 17:57:05 +0200
+
+siege (2.61) unstable; urgency=low
+
+  * New upstream release. Closes: #292268.
+
+ -- Ryszard Lach <rla@debian.org>  Sun, 13 Feb 2005 19:04:35 +0100
+
+siege (2.60b1-4) unstable; urgency=low
+
+  * Fixed segfault while running without .siegerc file. Closes: #270707.
+
+ -- Ryszard Lach <rla@debian.org>  Sat, 11 Dec 2004 23:36:56 +0100
+
+siege (2.60b1-3) unstable; urgency=low
+
+  * Fixed debian/rules. Closes: #284869.
+
+ -- Ryszard Lach <rla@debian.org>  Sat, 11 Dec 2004 23:17:18 +0100
+
+siege (2.60b1-2) unstable; urgency=low
+
+  * Adopting my old package (again). Closes: #268739
+  * Added notice about HTTPS support into package description. Closes: #270711
+  * Removed 'Suggests: scout'; it's not supported, so I'll won't package it.
+
+ -- Ryszard Lach <rla@debian.org>  Wed,  8 Sep 2004 23:49:15 +0200
+
+siege (2.60b1-1.1) unstable; urgency=low
+
+  * NMU during BSP
+  * Add build dependency on ed. Closes: #238376
+
+ -- Frank Lichtenheld <djpig@debian.org>  Sat, 17 Apr 2004 11:10:19 +0200
+
+siege (2.60b1-1) unstable; urgency=low
+
+  * New upstream release. Closes: #221300,#220147.
+
+  * Fixed copyright file. Closes: #202391.
+
+  * Added 'Conflicts: siege-ssl'.
+
+ -- Ryszard Lach <rla@debian.org>  Mon, 15 Mar 2004 20:17:50 +0100
+
+siege (2.55-2) unstable; urgency=low
+
+  * Added 'Suggests: scout'
+
+ -- Ryszard Lach <rla@debian.org>  Mon,  9 Sep 2002 20:51:58 +0200
+
+siege (2.55-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ryszard Lach <rla@debian.org>  Mon,  9 Sep 2002 18:34:07 +0200
+
+siege (2.09-4) unstable; urgency=low
+
+  * Minor changes in building scripts.
+
+  * Added siege-ssl to 'Conflicts' control field.
+
+ -- Ryszard Lach <rla@debian.org>  Wed, 30 Jan 2002 09:35:24 +0100
+
+siege (2.09-3) unstable; urgency=low
+
+  * Fixed Description field formatting. Closes: #128225.
+
+ -- Ryszard Lach <rla@debian.org>  Tue, 15 Jan 2002 13:56:00 +0100
+
+siege (2.09-2) unstable; urgency=low
+
+  * Updated config.guess and config.sub files. Closes: #128312.
+
+ -- Ryszard Lach <rla@debian.org>  Wed,  9 Jan 2002 22:18:50 +0100
+
+siege (2.09-1) unstable; urgency=low
+
+  * Initial Release. (Closes: #109542)
+
+ -- Ryszard Lach <rla@debian.org>  Thu,  3 Jan 2002 16:18:27 +0100
